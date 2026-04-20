@@ -2,7 +2,8 @@ backend:
   name: github
   repo: Almutazili/The-Last-Subaltern
   branch: main
-  client_id: Iv23li7gCGU6hY7nRwCI
+  auth_type: implicit
+  auth_endpoint: https://github.com/login/oauth/authorize
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
