@@ -1,0 +1,13 @@
+# Environment variables - never commit these
+.env.local
+.env*.local
+
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Netlify
+.netlify/
