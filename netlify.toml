@@ -1,11 +1,9 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = ".next"
 
-[[redirects]]
-  from   = "/admin"
-  to     = "/admin/index.html"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
