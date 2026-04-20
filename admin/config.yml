@@ -3,7 +3,7 @@ backend:
   repo: Almutazili/The-Last-Subaltern
   branch: main
   auth_endpoint: https://api.github.com/device/code
-  client_id: YOUR_CLIENT_ID_HERE  #Iv23li7gCGU6hY7nRwCI
+  client_id: #Iv23li7gCGU6hY7nRwCI
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
