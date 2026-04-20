@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Almutazili/The-Last-Subaltern
   branch: main
 
 media_folder: "images/uploads"
@@ -14,12 +15,3 @@ collections:
         file: "index.html"
         fields:
           - { label: "Publication Name", name: "pub_name", widget: "string", pattern: ['<div class="publication-name">(.*?)</div>', "Publication name"] }
-  - name: "articles"
-    label: "Articles"
-    folder: "_articles"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
