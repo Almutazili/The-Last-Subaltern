@@ -2,8 +2,7 @@ backend:
   name: github
   repo: Almutazili/The-Last-Subaltern
   branch: main
-  auth_endpoint: https://api.github.com/device/code
-  client_id: #Iv23li7gCGU6hY7nRwCI
+  client_id: Iv23li7gCGU6hY7nRwCI
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -16,7 +15,7 @@ collections:
         label: "General Settings"
         file: "index.html"
         fields:
-          - { label: "Publication Name", name: "pub_name", widget: "string", pattern: ['<div class="publication-name">(.*?)</div>', "Publication name"] }
+          - { label: "Publication Name", name: "pub_name", widget: "string" }
   - name: "articles"
     label: "Articles"
     folder: "_articles"
