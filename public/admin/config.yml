@@ -3,7 +3,7 @@ backend:
   repo: Almutazili/The-Last-Subaltern
   branch: main
   base_url: https://thesubalternspeaks.netlify.app
-  auth_endpoint: https://thesubalternspeaks.netlify.appapi/auth
+  auth_endpoint: api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
