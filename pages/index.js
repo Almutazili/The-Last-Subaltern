@@ -12,15 +12,16 @@ export async function getStaticProps() {
   const quotesData  = JSON.parse(fs.readFileSync(path.join(contentDir, 'quotes.json'), 'utf8'))
   const archiveData = JSON.parse(fs.readFileSync(path.join(contentDir, 'archive.json'), 'utf8'))
 
-  const readFolder = (folder) =>
-    fs.readdirSync(folder)
+  const readFolder = (folder) => {
+    if (!fs.existsSync(folder)) return []
+    return fs.readdirSync(folder)
       .filter(f => f.endsWith('.json'))
       .map(f => JSON.parse(fs.readFileSync(path.join(folder, f), 'utf8')))
       .sort((a, b) => a.order - b.order)
+  }
 
   const issues = readFolder(path.join(contentDir, 'issues'))
   const essays = readFolder(path.join(contentDir, 'essays'))
-
   return {
     props: {
       hero,
