@@ -9,21 +9,87 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Title",        name: "title",   widget: "string" }
-      - { label: "Date",         name: "date",    widget: "datetime" }
-      - { label: "Cover Image",  name: "image",   widget: "image",   required: false }
-      - { label: "Body",         name: "body",    widget: "markdown" }
 
-  - name: "pages"
-    label: "Pages"
-    folder: "content/pages"
+  # ── Page Sections (Singletons) ────────────────
+  - name: "page_sections"
+    label: "Page Sections"
+    files:
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.json"
+        fields:
+          - { label: "Issue Label",    name: "label",     widget: "string" }
+          - { label: "Title",          name: "title",     widget: "string" }
+          - { label: "Subtitle / Dek", name: "dek",       widget: "text" }
+          - { label: "Author",         name: "author",    widget: "string" }
+          - { label: "Read Time",      name: "read_time", widget: "string" }
+          - { label: "Date",           name: "date",      widget: "string" }
+          - { label: "Button Text",    name: "btn_text",  widget: "string", default: "Read Essay →" }
+
+      - name: "editor_letter"
+        label: "Editor's Letter"
+        file: "content/editor-letter.json"
+        fields:
+          - { label: "Body",      name: "body",      widget: "text" }
+          - { label: "Signature", name: "signature", widget: "string" }
+
+      - name: "pull_quote"
+        label: "Pull Quote"
+        file: "content/pull-quote.json"
+        fields:
+          - { label: "Quote", name: "quote", widget: "string" }
+
+      - name: "quotes"
+        label: "Marginalia Quotes"
+        file: "content/quotes.json"
+        fields:
+          - label: "Quotes"
+            name: "quotes"
+            widget: "list"
+            fields:
+              - { label: "Quote Text",     name: "text",   widget: "string" }
+              - { label: "Author / Source", name: "author", widget: "string" }
+
+      - name: "archive"
+        label: "Archive Timeline"
+        file: "content/archive.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Volume & Issue", name: "volume", widget: "string" }
+              - { label: "Title",          name: "title",  widget: "string" }
+              - { label: "Year",           name: "year",   widget: "string" }
+
+  # ── Current Issue Cards ───────────────────────
+  - name: "issues"
+    label: "Current Issue Cards"
+    folder: "content/issues"
     create: true
+    identifier_field: "title"
+    extension: "json"
+    format: "json"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body",  name: "body",  widget: "markdown" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Title",    name: "title",    widget: "string" }
+      - { label: "Author",   name: "author",   widget: "string" }
+      - { label: "Abstract", name: "abstract", widget: "text" }
+      - { label: "Order",    name: "order",    widget: "number", default: 1 }
+
+  # ── Recent Essays ─────────────────────────────
+  - name: "essays"
+    label: "Recent Essays"
+    folder: "content/essays"
+    create: true
+    identifier_field: "title"
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Category",  name: "category",  widget: "string" }
+      - { label: "Title",     name: "title",     widget: "string" }
+      - { label: "Author",    name: "author",    widget: "string" }
+      - { label: "Read Time", name: "read_time", widget: "string" }
+      - { label: "Excerpt",   name: "excerpt",   widget: "text" }
+      - { label: "Order",     name: "order",     widget: "number", default: 1 }
