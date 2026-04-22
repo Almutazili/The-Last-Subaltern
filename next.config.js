@@ -4,6 +4,20 @@ const nextConfig = {
   images: {
     domains: ["raw.githubusercontent.com"],
   },
-};
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/admin",
+          destination: "/admin/index.html",
+        },
+        {
+          source: "/admin/config.yml",
+          destination: "/admin/config.yml",
+        },
+      ],
+    }
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
