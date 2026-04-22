@@ -4,13 +4,18 @@ const nextConfig = {
   images: {
     domains: ["raw.githubusercontent.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+        permanent: false,
+      },
+    ]
+  },
   async rewrites() {
     return {
       beforeFiles: [
-        {
-          source: "/admin",
-          destination: "/admin/index.html",
-        },
         {
           source: "/admin/config.yml",
           destination: "/admin/config.yml",
