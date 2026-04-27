@@ -49,7 +49,6 @@ export default function Layout({ children, title = 'The Last Subaltern', activeP
           <div className="nav-row">
             <ul className="nav-links">
               <li><Link href="/essays" className={activePage === 'essays' ? 'active' : ''}>Essays</Link></li>
-              <li><Link href="/dispatches" className={activePage === 'dispatches' ? 'active' : ''}>Dispatches</Link></li>
               <li><Link href="/reviews" className={activePage === 'reviews' ? 'active' : ''}>Reviews</Link></li>
               <li><Link href="/archive" className={activePage === 'archive' ? 'active' : ''}>Archive</Link></li>
               <li><Link href="/contributors" className={activePage === 'contributors' ? 'active' : ''}>Contributors</Link></li>
