@@ -48,13 +48,13 @@ export default function Layout({ children, title = 'The Last Subaltern', activeP
           </div>
           <div className="nav-row">
             <ul className="nav-links">
-              <li><Link href="/about" className={activePage === 'about' ? 'active' : ''}>About</Link></li>
-              <li><Link href="/essays" className={activePage === 'essays' ? 'active' : ''}>Essays</Link></li>
-              <li><Link href="/reviews" className={activePage === 'reviews' ? 'active' : ''}>Reviews</Link></li>
-              <li><Link href="/archive" className={activePage === 'archive' ? 'active' : ''}>Archive</Link></li>
-              <li><Link href="/contributors" className={activePage === 'contributors' ? 'active' : ''}>Contributors</Link></li>
-              
-            </ul>
+  <li><Link href="/" className={activePage === 'home' ? 'active' : ''}>Home</Link></li>
+  <li><Link href="/essays" className={activePage === 'essays' ? 'active' : ''}>Essays</Link></li>
+  <li><Link href="/reviews" className={activePage === 'reviews' ? 'active' : ''}>Reviews</Link></li>
+  <li><Link href="/archive" className={activePage === 'archive' ? 'active' : ''}>Archive</Link></li>
+  <li><Link href="/contributors" className={activePage === 'contributors' ? 'active' : ''}>Contributors</Link></li>
+  <li><Link href="/about" className={activePage === 'about' ? 'active' : ''}>About</Link></li>
+</ul>
             <a href="https://theblackpaper.substack.com" target="_blank" rel="noreferrer" className="subscribe-nav">
               <i className="far fa-envelope" style={{marginRight:'6px'}}></i> Subscribe
             </a>
