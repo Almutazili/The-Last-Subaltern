@@ -181,7 +181,7 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
             <span>{hero.read_time}</span>
             <span>{hero.date}</span>
           </div>
-          <a href="#" className="btn-essay">{hero.btn_text}</a>
+          <Link href="/essays" className="btn-essay">{hero.btn_text}</Link>
         </section>
 
         <div className="thin-divider"></div>
