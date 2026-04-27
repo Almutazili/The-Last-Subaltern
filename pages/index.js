@@ -155,7 +155,7 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           </div>
           <div className="nav-row">
             <ul className="nav-links">
-              <ul className="nav-links">
+  <li><Link href="/">Home</Link></li>
   <li><Link href="/essays">Essays</Link></li>
   <li><Link href="/reviews">Reviews</Link></li>
   <li><Link href="/archive">Archive</Link></li>
