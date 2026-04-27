@@ -154,12 +154,14 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           </div>
           <div className="nav-row">
             <ul className="nav-links">
-              <li><a href="#">Essays</a></li>
-              <li><a href="#">Dispatches</a></li>
-              <li><a href="#">Reviews</a></li>
-              <li><a href="#">Archive</a></li>
-              <li><a href="#">Contributors</a></li>
-              <li><a href="#">About</a></li>
+              <ul className="nav-links">
+  <li><Link href="/essays">Essays</Link></li>
+  <li><Link href="/dispatches">Dispatches</Link></li>
+  <li><Link href="/reviews">Reviews</Link></li>
+  <li><Link href="/archive">Archive</Link></li>
+  <li><Link href="/contributors">Contributors</Link></li>
+  <li><Link href="/about">About</Link></li>
+</ul>
             </ul>
             <a href="#" className="subscribe-nav"><i className="far fa-envelope" style={{marginRight:'6px'}}></i> Subscribe</a>
           </div>
