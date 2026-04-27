@@ -157,7 +157,6 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
             <ul className="nav-links">
               <ul className="nav-links">
   <li><Link href="/essays">Essays</Link></li>
-  <li><Link href="/dispatches">Dispatches</Link></li>
   <li><Link href="/reviews">Reviews</Link></li>
   <li><Link href="/archive">Archive</Link></li>
   <li><Link href="/contributors">Contributors</Link></li>
