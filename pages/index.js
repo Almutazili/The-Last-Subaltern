@@ -154,19 +154,19 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
             <div className="motto">A JOURNAL OF IDEAS &amp; CRITICISM — EST. 2022</div>
           </div>
           <div className="nav-row">
-            <ul className="nav-links">
-  <li><Link href="/">Home</Link></li>
-  <li><Link href="/essays">Essays</Link></li>
-  <li><Link href="/reviews">Reviews</Link></li>
-  <li><Link href="/archive">Archive</Link></li>
-  <li><Link href="/contributors">Contributors</Link></li>
-  <li><Link href="/about">About</Link></li>
-</ul>
-            </ul>
-            <a href="#" className="subscribe-nav"><i className="far fa-envelope" style={{marginRight:'6px'}}></i> Subscribe</a>
-          </div>
-        </div>
-      </header>
+  <ul className="nav-links">
+    <li><Link href="/">Home</Link></li>
+    <li><Link href="/essays">Essays</Link></li>
+    <li><Link href="/reviews">Reviews</Link></li>
+    <li><Link href="/archive">Archive</Link></li>
+    <li><Link href="/contributors">Contributors</Link></li>
+    <li><Link href="/about">About</Link></li>
+  </ul>
+  <a href="https://theblackpaper.substack.com" target="_blank" rel="noreferrer" className="subscribe-nav">
+    <i className="far fa-envelope" style={{marginRight:'6px'}}></i> Subscribe
+  </a>
+</div>
+  </header>
 
       <main className="container">
 
