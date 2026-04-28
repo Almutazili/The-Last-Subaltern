@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import Head from 'next/head'
 import { useEffect } from 'react'
+import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 
@@ -23,12 +23,13 @@ export async function getStaticProps() {
 
   const issues = readFolder(path.join(contentDir, 'issues'))
   const essays = readFolder(path.join(contentDir, 'essays'))
+
   return {
     props: {
       hero,
       letter,
       pullQuote,
-      quotes:  quotesData.quotes,
+      quotes: quotesData.quotes,
       archive: archiveData.items,
       issues,
       essays,
@@ -38,7 +39,6 @@ export async function getStaticProps() {
 
 export default function Home({ hero, letter, pullQuote, quotes, archive, issues, essays }) {
   useEffect(() => {
-    // Reading progress bar
     const handleScroll = () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
@@ -48,16 +48,15 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
     }
     window.addEventListener('scroll', handleScroll)
 
-    // Rotating quotes
     let quoteIndex = 0
-    const quoteEl  = document.getElementById('rotatingQuote')
+    const quoteEl = document.getElementById('rotatingQuote')
     const authorEl = document.getElementById('rotatingAuthor')
     const rotateQuote = () => {
       quoteIndex = (quoteIndex + 1) % quotes.length
       if (quoteEl && authorEl) {
         quoteEl.style.opacity = '0'
         setTimeout(() => {
-          quoteEl.innerText  = quotes[quoteIndex].text
+          quoteEl.innerText = quotes[quoteIndex].text
           authorEl.innerText = quotes[quoteIndex].author
           quoteEl.style.opacity = '1'
         }, 200)
@@ -88,7 +87,7 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           .site-header { position: sticky; top: 0; background: #fefaf5; z-index: 1000; border-bottom: 1px solid #e8e0d3; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
           .header-container { max-width: 1280px; margin: 0 auto; padding: 1.2rem 2rem 0.8rem; }
           .masthead { text-align: center; border-top: 1px solid #dcd3c4; border-bottom: 1px solid #dcd3c4; padding: 0.9rem 0; margin-bottom: 0.6rem; }
-          .publication-name { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.5px; color: #1e2a2e; text-transform: uppercase; }
+          .publication-name { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.5px; color: #1e2a2e; text-transform: uppercase; text-decoration: none; display: block; }
           .motto { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #5e5a4f; margin-top: 6px; }
           .nav-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin: 0.75rem 0 0.25rem; }
           .nav-links { display: flex; flex-wrap: wrap; gap: 1.6rem; list-style: none; }
@@ -104,7 +103,7 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 3.3rem; font-weight: 600; line-height: 1.2; color: #1e2a2e; letter-spacing: -0.02em; margin: 0.5rem 0; }
           .hero-dek { font-size: 1.2rem; color: #3e3a33; max-width: 85%; margin: 0.75rem 0 1rem; }
           .byline-meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: #5b5546; text-transform: uppercase; letter-spacing: 0.5px; margin: 0.8rem 0 1.2rem; }
-          .btn-essay { background: none; border: 1px solid #1e2a2e; padding: 0.6rem 1.8rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.25s; display: inline-block; text-decoration: none; color: #1e2a2e; }
+          .btn-essay { background: none; border: 1px solid #1e2a2e; padding: 0.6rem 1.8rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.25s; display: inline-block; text-decoration: none; color: #1e2a2e; cursor: pointer; }
           .btn-essay:hover { background: #1e2a2e; color: #fefaf5; }
           .issue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin: 1rem 0 2rem; }
           .issue-card { border-bottom: 1px dashed #e2d9cf; padding-bottom: 1rem; }
@@ -137,7 +136,16 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           .footer-links a, .social-links a { text-decoration: none; color: #4b463b; transition: color 0.2s; }
           .footer-links a:hover, .social-links a:hover { color: #b78c3a; }
           .social-links { display: flex; gap: 1rem; font-size: 1rem; }
-          @media (max-width: 780px) { .hero-title { font-size: 2.2rem; } .container { padding: 1rem 1.5rem; } .nav-row { flex-direction: column; gap: 0.5rem; } .nav-links { justify-content: center; gap: 1rem; } .editor-letter { padding: 1.5rem; } .pull-quote { font-size: 1.3rem; } }
+          @media (max-width: 780px) {
+            .hero-title { font-size: 2.2rem; }
+            .container { padding: 1rem 1.5rem; }
+            .nav-row { flex-direction: column; gap: 0.5rem; }
+            .nav-links { justify-content: center; gap: 1rem; }
+            .editor-letter { padding: 1.5rem; }
+            .pull-quote { font-size: 1.3rem; }
+            .hero-dek { max-width: 100%; }
+            .publication-name { font-size: 1.8rem; }
+          }
           @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
           section, .hero, .issue-grid, .essays-grid, .editor-letter, .marginalia, .subscription, .archive-timeline { animation: fadeInUp 0.55s ease forwards; }
         `}</style>
@@ -150,27 +158,27 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
       <header className="site-header">
         <div className="header-container">
           <div className="masthead">
-            <div className="publication-name">THE LAST SUBALTERN</div>
+            <Link href="/" className="publication-name">THE LAST SUBALTERN</Link>
             <div className="motto">A JOURNAL OF IDEAS &amp; CRITICISM — EST. 2022</div>
           </div>
           <div className="nav-row">
-  <ul className="nav-links">
-    <li><Link href="/">Home</Link></li>
-    <li><Link href="/essays">Essays</Link></li>
-    <li><Link href="/reviews">Reviews</Link></li>
-    <li><Link href="/archive">Archive</Link></li>
-    <li><Link href="/contributors">Contributors</Link></li>
-    <li><Link href="/about">About</Link></li>
-  </ul>
-  <a href="https://theblackpaper.substack.com" target="_blank" rel="noreferrer" className="subscribe-nav">
-    <i className="far fa-envelope" style={{marginRight:'6px'}}></i> Subscribe
-  </a>
-</div>
-  </header>
+            <ul className="nav-links">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/essays">Essays</Link></li>
+              <li><Link href="/reviews">Reviews</Link></li>
+              <li><Link href="/archive">Archive</Link></li>
+              <li><Link href="/contributors">Contributors</Link></li>
+              <li><Link href="/about">About</Link></li>
+            </ul>
+            <a href="https://theblackpaper.substack.com" target="_blank" rel="noreferrer" className="subscribe-nav">
+              <i className="far fa-envelope" style={{marginRight: '6px'}}></i> Subscribe
+            </a>
+          </div>
+        </div>
+      </header>
 
       <main className="container">
 
-        {/* Hero */}
         <section className="hero">
           <div className="hero-label">{hero.label}</div>
           <h1 className="hero-title">{hero.title}</h1>
@@ -185,7 +193,6 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
 
         <div className="thin-divider"></div>
 
-        {/* Current Issue */}
         <div>
           <div className="section-head">CURRENT ISSUE</div>
           <div className="issue-grid">
@@ -202,14 +209,17 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
 
         <div className="thin-divider"></div>
 
-        {/* Recent Essays */}
         <div>
           <div className="section-head">RECENT ESSAYS</div>
           <div className="essays-grid">
             {essays.map((essay, i) => (
               <div className="essay-card" key={i}>
                 <div className="card-category">{essay.category}</div>
-                <h3>{essay.title}</h3>
+                <h3>
+                  <Link href={`/essays/${essay.slug || i}`} style={{textDecoration: 'none', color: 'inherit'}}>
+                    {essay.title}
+                  </Link>
+                </h3>
                 <div className="essay-meta">By {essay.author} · {essay.read_time}</div>
                 <div className="essay-excerpt">{essay.excerpt}</div>
               </div>
@@ -217,30 +227,25 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           </div>
         </div>
 
-        {/* Pull Quote */}
         <div className="pull-quote">&ldquo;{pullQuote.quote}&rdquo;</div>
 
-        {/* Editor's Letter */}
         <div className="editor-letter">
           <p className="dropcap">{letter.body}</p>
           <div className="signature">{letter.signature}</div>
         </div>
 
-        {/* Marginalia */}
         <div className="marginalia">
-          <div style={{fontSize:'0.7rem', letterSpacing:'2px', textTransform:'uppercase', color:'#b78c3a'}}>MARGINALIA</div>
-          <div id="rotatingQuote" className="quote-text">&ldquo;{quotes[0]?.text}&rdquo;</div>
-          <div id="rotatingAuthor" className="quote-author">{quotes[0]?.author}</div>
+          <div style={{fontSize: '0.7rem', letterSpacing: '2px', textTransform: 'uppercase', color: '#b78c3a'}}>MARGINALIA</div>
+          <div id="rotatingQuote" className="quote-text">&ldquo;{quotes[0] && quotes[0].text}&rdquo;</div>
+          <div id="rotatingAuthor" className="quote-author">{quotes[0] && quotes[0].author}</div>
         </div>
 
-        {/* Subscription */}
         <div className="subscription">
           <div className="sub-title">Join readers who still believe in thinking.</div>
-          <p style={{marginTop:'0.6rem', color:'#4b473e'}}>Subscribe for premium essays, archival access, and the quarterly print folio.</p>
-          <iframe src="https://theblackpaper.substack.com/embed" width="480" height="320" style={{border:'1px solid #EEE', background:'white', marginTop:'1rem'}} frameBorder="0" scrolling="no"></iframe>
+          <p style={{marginTop: '0.6rem', color: '#4b473e'}}>Subscribe for premium essays, archival access, and the quarterly print folio.</p>
+          <iframe src="https://theblackpaper.substack.com/embed" width="480" height="320" style={{border: '1px solid #EEE', background: 'white', marginTop: '1rem', maxWidth: '100%'}} frameBorder="0" scrolling="no"></iframe>
         </div>
 
-        {/* Archive */}
         <div className="archive-timeline">
           <div className="section-head">SELECTED ARCHIVE / TIMELINE</div>
           <div className="timeline-list">
@@ -252,21 +257,22 @@ export default function Home({ hero, letter, pullQuote, quotes, archive, issues,
           </div>
         </div>
 
-        {/* Footer */}
         <footer className="footer">
           <div className="footer-links">
+            <Link href="/about">About</Link>
+            <Link href="/contributors">Contributors</Link>
             <a href="#">Submission Guidelines</a>
             <a href="#">Contact</a>
-            <a href="#">Advertise</a>
             <a href="#">Ethics Policy</a>
-            <a href="#">RSS</a>
           </div>
           <div className="social-links">
             <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Substack"><i className="fas fa-newspaper"></i></a>
+            <a href="https://theblackpaper.substack.com" aria-label="Substack"><i className="fas fa-newspaper"></i></a>
             <a href="#" aria-label="Bluesky"><i className="fas fa-cloud"></i></a>
           </div>
-          <div style={{fontSize:'0.7rem', width:'100%', textAlign:'center', marginTop:'1rem'}}>© The Last Subaltern — All rights reserved.</div>
+          <div style={{fontSize: '0.7rem', width: '100%', textAlign: 'center', marginTop: '1rem'}}>
+            © The Last Subaltern — All rights reserved.
+          </div>
         </footer>
 
       </main>
